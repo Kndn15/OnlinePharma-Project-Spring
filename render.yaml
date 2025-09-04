@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: onlinepharma-backend
+    runtime: docker
+    repo: https://github.com/Kndn15/OnlinePharma-Project-Spring
+    rootDir: backend/onlinepharma_backend
+    dockerfilePath: Dockerfile
+    plan: free
+
+  - type: web
+    name: onlinepharma-frontend
+    env: node
+    repo: https://github.com/Kndn15/OnlinePharma-Project-Spring
+    rootDir: fontend/onlinepharma_frontend
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npx serve -s dist
