@@ -34,7 +34,7 @@ const PaymentPage = () => {
         navigate("/login");
         return;
       }
-      const response = await axios.get("http://localhost:8080/api/user/profile", {
+      const response = await axios.get("https://onlinepharma-backend.onrender.com/api/user/profile", {
         headers: { Authorization:` Bearer ${token}` },
       });
       setUser(response.data);
@@ -66,7 +66,7 @@ const PaymentPage = () => {
         try {
           const upiId=response.razorpay_payment_id;
           await axios.post(
-            `http://localhost:8080/api/user/${user.id}/orders`,
+            `https://onlinepharma-backend.onrender.com/api/user/${user.id}/orders`,
             { drugs ,upiId}, // send drugs with id and quantity
             { headers: { Authorization:` Bearer ${localStorage.getItem("token")}` } }
           );
